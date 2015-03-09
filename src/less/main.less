@@ -1,0 +1,59 @@
+@import "../../node_modules/material-ui/src/less/scaffolding.less";
+@import "../../node_modules/material-ui/src/less/components.less";
+
+.mainContainer {
+  padding: 0 16px;
+}
+
+.mui-app-bar {
+  margin-bottom: 16px;
+}
+
+.stationsFilter {
+  width: 100%;
+}
+
+.stationListLoading {
+  text-align: center;
+  margin-top: 16px;
+}
+
+
+.mui-paper-container {
+  padding: 8px;
+  word-break: break-all;
+}
+
+.stationList {
+  padding: 16px 0;
+  display: block;
+
+  .mui-paper {
+    margin: 0 auto 16px;
+  }
+}
+
+.stationItemAnimation-enter {
+  opacity: 0.01;
+  transition: opacity .25s ease-in;
+
+  &.stationItemAnimation-enter-active {
+    opacity: 1;
+  }
+}
+
+.stationItemAnimation-leave {
+  opacity: 1;
+  transition: opacity .25s ease-in;
+
+  &.stationItemAnimation-leave-active {
+    opacity: 0.01;
+  }
+}
+
+
+.stationInfo {
+  .stationInfoItem {
+    margin-right: 16px;
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "firebase": "styr-och-stall",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
