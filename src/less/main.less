@@ -6,47 +6,32 @@
 }
 
 .mui-app-bar {
-  margin-bottom: 16px;
+  /*margin-bottom: 16px;*/
 }
 
 .stationsFilter {
   width: 100%;
 }
 
-.stationListLoading {
+.spinnerContainer {
   text-align: center;
   margin-top: 16px;
 }
 
-
-.mui-paper-container {
-  padding: 8px 16px;
-  word-break: break-all;
+.stationsCheckboxFilter {
+  margin-top: 8px;
 }
 
 .stationList {
   padding: 16px 0;
   display: block;
 
+  .mui-paper-container {
+    padding: 8px 16px;
+    word-break: break-all;
+  }
+
   .mui-paper {
     margin: 0 auto 16px;
-  }
-}
-
-.stationItemAnimation-enter {
-  opacity: 0.01;
-  transition: opacity .25s ease-in;
-
-  &.stationItemAnimation-enter-active {
-    opacity: 1;
-  }
-}
-
-.stationItemAnimation-leave {
-  opacity: 1;
-  transition: opacity .25s ease-in;
-
-  &.stationItemAnimation-leave-active {
-    opacity: 0.01;
   }
 }

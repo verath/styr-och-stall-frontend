@@ -11,6 +11,7 @@ var mui             = require('material-ui');
 var locationStore   = require('./stores/locationStore');
 var stationsStore   = require('./stores/stationsStore');
 var Station         = require('./components/station');
+var Spinner         = require('./components/spinner');
 
 var AppCanvas               = mui.AppCanvas;
 var AppBar                  = mui.AppBar;
@@ -93,7 +94,8 @@ var StyrOchStall = React.createClass({
 
         // Filter by selected filters
         stations = stations.filter((station) => {
-            for(let filter of filterBy) {
+            console.log(station, filterBy);
+            for (let filter of filterBy) {
                 if (station[filter] <= 0) {
                     return false;
                 }
@@ -112,7 +114,7 @@ var StyrOchStall = React.createClass({
             const lat = location.lat;
             const long = location.long;
             stations.forEach((station) =>
-                station.locationDiff = Math.sqrt(Math.pow(station.lat - lat, 2) + Math.pow(station.long - long, 2))
+                    station.locationDiff = Math.sqrt(Math.pow(station.lat - lat, 2) + Math.pow(station.long - long, 2))
             );
             stations.sort((a, b) => a['locationDiff'] - b['locationDiff']);
         }
@@ -121,7 +123,7 @@ var StyrOchStall = React.createClass({
         stations = stations.slice(0, NUM_STATIONS);
 
         stations = stations.map((station) =>
-            (<Station station={ station } key={ station.id } />)
+                (<Station station={ station } key={ station.id } />)
         );
 
         return (
@@ -140,19 +142,17 @@ var StyrOchStall = React.createClass({
                         name="excludeNoBikesFilter"
                         value="freeBikes"
                         label="Exclude stations with no bikes"
+                        className="stationsCheckboxFilter"
                         onCheck={this._onStationFilterChange}/>
                     <Checkbox
                         name="excludeNoStationsFilter"
-                        value="freeStations"
+                        value="freeStands"
                         label="Exclude stations with no stands"
+                        className="stationsCheckboxFilter"
                         onCheck={this._onStationFilterChange}/>
 
                     <div className="stationList">
-                        <ReactCSSTransitionGroup transitionName="stationItemAnimation">
-                            { this.state.loading
-                                ? <div key="stationListLoading" className="stationListLoading"><i className="fa fa-3x fa-refresh fa-spin"></i></div>
-                                : stations}
-                        </ReactCSSTransitionGroup>
+                        { this.state.loading ? <Spinner /> : stations}
                     </div>
                 </main>
             </AppCanvas>
