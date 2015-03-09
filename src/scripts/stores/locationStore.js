@@ -7,7 +7,7 @@ var React       = require('react');
 
 
 var locationStore = Reflux.createStore({
-    init: function () {
+    init() {
         this.location = null;
 
         if ("geolocation" in navigator) {
@@ -15,7 +15,7 @@ var locationStore = Reflux.createStore({
         }
     },
 
-    updateLocation: function (position) {
+    updateLocation(position) {
         var coords = position.coords;
         this.location = {
             lat: coords.latitude,

@@ -2,22 +2,21 @@
 
 
 // @formatter:off
-var React   = require('react');
-var mui     = require('material-ui');
+const React   = require('react');
+const mui     = require('material-ui');
 
-var Paper       = mui.Paper;
-var FlatButton  = mui.FlatButton;
-var FontIcon    = mui.FontIcon;
+const Paper       = mui.Paper;
+const FlatButton  = mui.FlatButton;
+const FontIcon    = mui.FontIcon;
 // @formatter:on
 
 
 var Station = React.createClass({
     render() {
-        var station = this.props.station;
+        let station = this.props.station;
 
         // Create a better breaking point for small screens
         station.label = station.label.replace('/', ' / ');
-
 
         var mapsLink = `https://www.google.com/maps/dir/Current+Location/${station.lat},${station.long}`;
 
@@ -30,7 +29,9 @@ var Station = React.createClass({
                     <span className="stationInfoItem">Available Stands: { station.freeStands }</span>
                     <br />
                     <span className="stationInfoItem">
-                        <i className="fa fa-map-marker"></i> <a href={mapsLink} target="_blank">Find via Maps</a>
+                        <i className="fa fa-map-marker"></i>
+                        &nbsp;
+                        <a href={mapsLink} target="_blank">Find via Maps</a>
                     </span>
                 </p>
             </Paper>

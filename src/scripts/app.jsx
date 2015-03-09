@@ -3,24 +3,22 @@
 require("babelify/polyfill");
 
 // @formatter:off
-var Reflux          = require('reflux');
-var React           = require('react/addons');
-var tapEventPlugin  = require("react-tap-event-plugin");
-var mui             = require('material-ui');
+const Reflux            = require('reflux');
+const React             = require('react');
+const tapEventPlugin    = require("react-tap-event-plugin");
+const mui               = require('material-ui');
 
-var locationStore   = require('./stores/locationStore');
-var stationsStore   = require('./stores/stationsStore');
-var Station         = require('./components/station');
-var Spinner         = require('./components/spinner');
+const locationStore     = require('./stores/locationStore');
+const stationsStore     = require('./stores/stationsStore');
+const Station           = require('./components/station');
+const Spinner           = require('./components/spinner');
 
-var AppCanvas               = mui.AppCanvas;
-var AppBar                  = mui.AppBar;
-var DropDownMenu            = mui.DropDownMenu;
-var TextField               = mui.TextField;
-var Checkbox                = mui.Checkbox;
-var Paper                   = mui.Paper;
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
+const AppCanvas         = mui.AppCanvas;
+const AppBar            = mui.AppBar;
+const DropDownMenu      = mui.DropDownMenu;
+const TextField         = mui.TextField;
+const Checkbox          = mui.Checkbox;
+const Paper             = mui.Paper;
 // @formatter:on
 
 //Needed for onTouchTap
@@ -29,7 +27,7 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 tapEventPlugin();
 
 
-var NUM_STATIONS = 15;
+const NUM_STATIONS = 15;
 
 
 var StyrOchStall = React.createClass({
@@ -87,10 +85,10 @@ var StyrOchStall = React.createClass({
     },
 
     render() {
-        var stations = this.state.stations;
-        var filterBy = this.state.filterBy;
-        var searchBy = this.state.searchBy;
-        var location = this.state.location;
+        let stations = this.state.stations;
+        let filterBy = this.state.filterBy;
+        let searchBy = this.state.searchBy;
+        let location = this.state.location;
 
         // Filter by selected filters
         stations = stations.filter((station) => {
@@ -131,25 +129,25 @@ var StyrOchStall = React.createClass({
                 <AppBar title="Styr och Ställ" showMenuIconButton={false} zDepth={0}></AppBar>
 
                 <main className="mainContainer">
-
                     <TextField
                         className="stationsFilter"
                         hintText="Station Name"
                         floatingLabelText="Filter by Name"
-                        onChange={this._onStationSearchChange}/>
+                        onChange={ this._onStationSearchChange } />
 
                     <Checkbox
                         name="excludeNoBikesFilter"
                         value="freeBikes"
                         label="Exclude stations with no bikes"
                         className="stationsCheckboxFilter"
-                        onCheck={this._onStationFilterChange}/>
+                        onCheck={ this._onStationFilterChange } />
+
                     <Checkbox
                         name="excludeNoStationsFilter"
                         value="freeStands"
                         label="Exclude stations with no stands"
                         className="stationsCheckboxFilter"
-                        onCheck={this._onStationFilterChange}/>
+                        onCheck={ this._onStationFilterChange } />
 
                     <div className="stationList">
                         { this.state.loading ? <Spinner /> : stations}
@@ -158,7 +156,6 @@ var StyrOchStall = React.createClass({
             </AppCanvas>
         )
     }
-
 });
 
 React.render(<StyrOchStall />, document.body);

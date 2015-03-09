@@ -8,16 +8,15 @@ var Firebase    = require('firebase');
 
 var stationsRef = new Firebase('https://styr-och-stall.firebaseio.com/stations');
 
-
 var stationsStore = Reflux.createStore({
-    init: function () {
+    init() {
         stationsRef.on('value', this.updateStations.bind(this));
     },
 
-    updateStations: function (stationsSnapshot) {
-        var stations = [];
-        stationsSnapshot.forEach(function (stationData) {
-            var station = stationData.val();
+    updateStations(stationsSnapshot) {
+        let stations = [];
+        stationsSnapshot.forEach((stationData) => {
+            let station = stationData.val();
             station.id = stationData.key();
             stations.push(station);
         });

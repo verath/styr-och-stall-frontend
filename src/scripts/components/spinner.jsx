@@ -16,5 +16,3 @@ var Spinner = React.createClass({
 });
 
 module.exports = Spinner;
-
-
