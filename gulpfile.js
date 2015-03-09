@@ -10,6 +10,9 @@ var watchify    = require('watchify');
 var source      = require('vinyl-source-stream');
 // @formatter:on
 
+
+var prod = plugins.util.env.prod;
+
 // gulp-plumber for error handling
 function onError() {
     var args = Array.prototype.slice.call(arguments);
@@ -56,6 +59,7 @@ gulp.task('scripts', function () {
         return bundler.bundle()
             .on('error', onError)
             .pipe(source('app.js'))
+            .pipe(prod ? plugins.streamify(plugins.uglify()) : plugins.util.noop())
             .pipe(gulp.dest('dist/scripts'))
             .pipe(plugins.notify(function () {
                 console.log('Bundling Complete - ' + (Date.now() - start) + 'ms');
