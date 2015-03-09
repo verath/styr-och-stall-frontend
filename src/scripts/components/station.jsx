@@ -18,18 +18,21 @@ var Station = React.createClass({
         // Create a better breaking point for small screens
         station.label = station.label.replace('/', ' / ');
 
-        var mapsLink = `https://maps.google.com/?q=${station.lat},${station.long}`;
+
+        var mapsLink = `https://www.google.com/maps/dir/Current+Location/${station.lat},${station.long}`;
 
         return (
             <Paper className="station">
-                <h2>{ station.label }</h2>
-                <div className="stationInfo">
-                    <span className="stationInfoItem">Bikes: { station.freeBikes }</span>
-                    <span className="stationInfoItem">Stands: { station.freeStands }</span>
+                <div className="mui-font-style-title">{ station.label }</div>
+                <p>
+                    <span className="stationInfoItem">Available Bikes: { station.freeBikes }</span>
+                    <br />
+                    <span className="stationInfoItem">Available Stands: { station.freeStands }</span>
+                    <br />
                     <span className="stationInfoItem">
-                        <i className="fa fa-map-marker"></i> <a href={mapsLink} target="_blank">Open in Maps</a>
+                        <i className="fa fa-map-marker"></i> <a href={mapsLink} target="_blank">Find via Maps</a>
                     </span>
-                </div>
+                </p>
             </Paper>
         );
     }

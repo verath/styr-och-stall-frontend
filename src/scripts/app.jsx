@@ -132,8 +132,8 @@ var StyrOchStall = React.createClass({
 
                     <TextField
                         className="stationsFilter"
-                        hintText="Station name"
-                        floatingLabelText="Filter by name"
+                        hintText="Station Name"
+                        floatingLabelText="Filter by Name"
                         onChange={this._onStationSearchChange}/>
 
                     <Checkbox
