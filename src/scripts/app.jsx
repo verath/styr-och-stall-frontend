@@ -92,7 +92,6 @@ var StyrOchStall = React.createClass({
 
         // Filter by selected filters
         stations = stations.filter((station) => {
-            console.log(station, filterBy);
             for (let filter of filterBy) {
                 if (station[filter] <= 0) {
                     return false;
